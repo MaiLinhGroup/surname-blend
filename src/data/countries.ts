@@ -293,6 +293,67 @@ const countries: Country[] = [
       },
     ],
   },
+  {
+    id: "ru",
+    name: "Russian Federation",
+    description:
+      "In Russia, couples have flexibility in choosing their surnames after marriage.",
+    options: [
+      {
+        id: "ru-person1",
+        description: "Person 1 takes Person 2's surname",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `${person1.firstName} takes ${person2.firstName}'s surname (${person2.surname})`,
+        }),
+      },
+      {
+        id: "ru-person2",
+        description: "Person 2 takes Person 1's surname",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}`,
+          description: `${person2.firstName} takes ${person1.firstName}'s surname (${person1.surname})`,
+        }),
+      },
+      {
+        id: "ru-unchanged",
+        description: "Both keep their original surnames",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames`,
+        }),
+      },
+      {
+        id: "ru-combined",
+        description:
+          "The hyphenated combined surname applies to both. However, a double-hyphenated surname (e.g., if one spouse already had a hyphenated name) is generally not allowed.",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}-${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}-${person2.surname}`,
+          description: `Both partners use a hyphenated combination (${person1.surname}-${person2.surname})`,
+        }),
+      },
+    ],
+  },
 ];
 
 export default countries;
