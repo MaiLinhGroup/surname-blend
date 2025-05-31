@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Person, Country } from './types';
 import NameInput from './components/NameInput';
 import CountrySelector from './components/CountrySelector';
@@ -11,12 +11,12 @@ import { Heart } from 'lucide-react';
 function App() {
   const [person1, setPerson1] = useState<Person>({
     firstName: '',
-    lastName: ''
+    surname: ''
   });
   
   const [person2, setPerson2] = useState<Person>({
     firstName: '',
-    lastName: ''
+    surname: ''
   });
   
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
@@ -24,9 +24,9 @@ function App() {
   const isFormValid = () => {
     return (
       person1.firstName.trim() !== '' &&
-      person1.lastName.trim() !== '' &&
+      person1.surname.trim() !== '' &&
       person2.firstName.trim() !== '' &&
-      person2.lastName.trim() !== '' &&
+      person2.surname.trim() !== '' &&
       selectedCountry !== null
     );
   };

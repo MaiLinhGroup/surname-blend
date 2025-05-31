@@ -1,212 +1,294 @@
-import { Country } from '../types';
+import { Country } from "../types";
 
 const countries: Country[] = [
   {
-    id: 'us',
-    name: 'United States',
-    description: 'In the US, couples have flexibility in choosing their surnames after marriage.',
+    id: "us",
+    name: "United States",
+    description:
+      "In the US, couples have flexibility in choosing their surnames after marriage.",
     options: [
       {
-        id: 'us-traditional',
-        description: 'Person 2 takes Person 1\'s last name',
+        id: "us-traditional",
+        description: "Person 2 takes Person 1's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person1.lastName}`,
-          description: `${person2.firstName} takes ${person1.firstName}'s last name (${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}`,
+          description: `${person2.firstName} takes ${person1.firstName}'s surname (${person1.surname})`,
         }),
       },
       {
-        id: 'us-traditional-reversed',
-        description: 'Person 1 takes Person 2\'s last name',
+        id: "us-traditional-reversed",
+        description: "Person 1 takes Person 2's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `${person1.firstName} takes ${person2.firstName}'s last name (${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `${person1.firstName} takes ${person2.firstName}'s surname (${person2.surname})`,
         }),
       },
       {
-        id: 'us-hyphenated',
-        description: 'Hyphenated combination of both last names',
+        id: "us-hyphenated",
+        description: "Hyphenated combination of both surnames",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}-${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person1.lastName}-${person2.lastName}`,
-          description: `Both partners use a hyphenated combination (${person1.lastName}-${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}-${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}-${person2.surname}`,
+          description: `Both partners use a hyphenated combination (${person1.surname}-${person2.surname})`,
         }),
       },
       {
-        id: 'us-hyphenated-reversed',
-        description: 'Hyphenated combination of both last names (reversed order)',
+        id: "us-hyphenated-reversed",
+        description: "Hyphenated combination of both surnames (reversed order)",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person2.lastName}-${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}-${person1.lastName}`,
-          description: `Both partners use a hyphenated combination (${person2.lastName}-${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}-${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}-${person1.surname}`,
+          description: `Both partners use a hyphenated combination (${person2.surname}-${person1.surname})`,
         }),
       },
       {
-        id: 'us-new-surname',
-        description: 'Both take a completely new surname',
+        id: "us-new-surname",
+        description: "Both take a completely new surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}[New Surname]`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}[New Surname]`,
-          description: `Both partners take a completely new surname`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }[New Surname]`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }[New Surname]`,
+          description: `Both partners take a completely new surname`,
         }),
       },
       {
-        id: 'us-unchanged',
-        description: 'Both keep their original surnames',
+        id: "us-unchanged",
+        description: "Both keep their original surnames",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners keep their original surnames`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames`,
         }),
       },
     ],
   },
   {
-    id: 'spain',
-    name: 'Spain',
-    description: 'In Spain, people traditionally have two surnames: father\'s first surname and mother\'s first surname.',
+    id: "spain",
+    name: "Spain",
+    description:
+      "In Spain, people traditionally have two surnames: father's first surname and mother's first surname.",
     options: [
       {
-        id: 'spain-traditional',
-        description: 'Both keep their original surnames (traditional Spanish naming)',
+        id: "spain-traditional",
+        description:
+          "Both keep their original surnames (traditional Spanish naming)",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners keep their original surnames, following Spanish tradition`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames, following Spanish tradition`,
         }),
       },
       {
-        id: 'spain-children',
-        description: 'Children will combine first surnames of both parents',
+        id: "spain-children",
+        description: "Children will combine first surnames of both parents",
         nameFunction: (person1, person2) => {
-          const person1LastName = person1.lastName.split(' ')[0];
-          const person2LastName = person2.lastName.split(' ')[0];
+          const person1Surname = person1.surname.split(" ")[0];
+          const person2Surname = person2.surname.split(" ")[0];
           return {
-            person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-            person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-            description: `Both keep original names. Children would be: [Child's name] ${person1LastName} ${person2LastName}`
+            person1FullName: `${person1.firstName}${
+              person1.middleName ? ` ${person1.middleName} ` : " "
+            }${person1.surname}`,
+            person2FullName: `${person2.firstName}${
+              person2.middleName ? ` ${person2.middleName} ` : " "
+            }${person2.surname}`,
+            description: `Both keep original names. Children would be: [Child's name] ${person1Surname} ${person2Surname}`,
           };
         },
       },
     ],
   },
   {
-    id: 'japan',
-    name: 'Japan',
-    description: 'In Japan, married couples must share the same surname by law.',
+    id: "japan",
+    name: "Japan",
+    description:
+      "In Japan, married couples must share the same surname by law.",
     options: [
       {
-        id: 'japan-person1',
-        description: 'Both take Person 1\'s surname',
+        id: "japan-person1",
+        description: "Both take Person 1's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person1.lastName}`,
-          description: `Both partners take ${person1.firstName}'s surname (${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}`,
+          description: `Both partners take ${person1.firstName}'s surname (${person1.surname})`,
         }),
       },
       {
-        id: 'japan-person2',
-        description: 'Both take Person 2\'s surname',
+        id: "japan-person2",
+        description: "Both take Person 2's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners take ${person2.firstName}'s surname (${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners take ${person2.firstName}'s surname (${person2.surname})`,
         }),
       },
     ],
   },
   {
-    id: 'germany',
-    name: 'Germany',
-    description: 'In Germany, couples can choose one surname as a family name or keep their birth names.',
+    id: "germany",
+    name: "Germany",
+    description:
+      "In Germany, couples can choose one surname as a family name or keep their birth names.",
     options: [
       {
-        id: 'germany-person1',
-        description: 'Both take Person 1\'s surname',
+        id: "germany-person1",
+        description: "Both take Person 1's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person1.lastName}`,
-          description: `Both partners take ${person1.firstName}'s surname (${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}`,
+          description: `Both partners take ${person1.firstName}'s surname (${person1.surname})`,
         }),
       },
       {
-        id: 'germany-person2',
-        description: 'Both take Person 2\'s surname',
+        id: "germany-person2",
+        description: "Both take Person 2's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners take ${person2.firstName}'s surname (${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners take ${person2.firstName}'s surname (${person2.surname})`,
         }),
       },
       {
-        id: 'germany-double-person1',
-        description: 'Person 2 adds Person 1\'s surname (double surname)',
+        id: "germany-double-person1",
+        description: "Person 2 adds Person 1's surname (double surname)",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName} ${person1.lastName}`,
-          description: `${person2.firstName} adds ${person1.firstName}'s surname (${person2.lastName} ${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname} ${person1.surname}`,
+          description: `${person2.firstName} adds ${person1.firstName}'s surname (${person2.surname} ${person1.surname})`,
         }),
       },
       {
-        id: 'germany-double-person2',
-        description: 'Person 1 adds Person 2\'s surname (double surname)',
+        id: "germany-double-person2",
+        description: "Person 1 adds Person 2's surname (double surname)",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName} ${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `${person1.firstName} adds ${person2.firstName}'s surname (${person1.lastName} ${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname} ${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `${person1.firstName} adds ${person2.firstName}'s surname (${person1.surname} ${person2.surname})`,
         }),
       },
       {
-        id: 'germany-unchanged',
-        description: 'Both keep their original surnames',
+        id: "germany-unchanged",
+        description: "Both keep their original surnames",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners keep their original surnames`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames`,
         }),
       },
     ],
   },
   {
-    id: 'brazil',
-    name: 'Brazil',
-    description: 'In Brazil, couples have flexibility in choosing their surnames after marriage.',
+    id: "brazil",
+    name: "Brazil",
+    description:
+      "In Brazil, couples have flexibility in choosing their surnames after marriage.",
     options: [
       {
-        id: 'brazil-add-person1',
-        description: 'Person 2 adds Person 1\'s surname',
+        id: "brazil-add-person1",
+        description: "Person 2 adds Person 1's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName} ${person1.lastName}`,
-          description: `${person2.firstName} adds ${person1.firstName}'s surname (${person2.lastName} ${person1.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname} ${person1.surname}`,
+          description: `${person2.firstName} adds ${person1.firstName}'s surname (${person2.surname} ${person1.surname})`,
         }),
       },
       {
-        id: 'brazil-add-person2',
-        description: 'Person 1 adds Person 2\'s surname',
+        id: "brazil-add-person2",
+        description: "Person 1 adds Person 2's surname",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName} ${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `${person1.firstName} adds ${person2.firstName}'s surname (${person1.lastName} ${person2.lastName})`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname} ${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `${person1.firstName} adds ${person2.firstName}'s surname (${person1.surname} ${person2.surname})`,
         }),
       },
       {
-        id: 'brazil-both-add',
-        description: 'Both add each other\'s surnames',
+        id: "brazil-both-add",
+        description: "Both add each other's surnames",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName} ${person2.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName} ${person1.lastName}`,
-          description: `Both partners add each other's surnames`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname} ${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname} ${person1.surname}`,
+          description: `Both partners add each other's surnames`,
         }),
       },
       {
-        id: 'brazil-unchanged',
-        description: 'Both keep their original surnames',
+        id: "brazil-unchanged",
+        description: "Both keep their original surnames",
         nameFunction: (person1, person2) => ({
-          person1FullName: `${person1.firstName}${person1.middleName ? ` ${person1.middleName} ` : ' '}${person1.lastName}`,
-          person2FullName: `${person2.firstName}${person2.middleName ? ` ${person2.middleName} ` : ' '}${person2.lastName}`,
-          description: `Both partners keep their original surnames`
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames`,
         }),
       },
     ],

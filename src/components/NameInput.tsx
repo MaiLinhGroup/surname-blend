@@ -54,16 +54,16 @@ const NameInput: React.FC<NameInputProps> = ({ label, person, onChange, iconColo
         </div>
         
         <div>
-          <label htmlFor={`${label.toLowerCase()}-last-name`} className="block text-sm font-medium text-gray-700 mb-1">
-            Last Name
+          <label htmlFor={`${label.toLowerCase()}-surname`} className="block text-sm font-medium text-gray-700 mb-1">
+            Surname
           </label>
           <input
             type="text"
-            id={`${label.toLowerCase()}-last-name`}
-            value={person.lastName}
-            onChange={(e) => handleChange('lastName', e.target.value)}
+            id={`${label.toLowerCase()}-surname`}
+            value={person.surname}
+            onChange={(e) => handleChange('surname', e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-200"
-            placeholder="Enter last name"
+            placeholder="Enter surname"
           />
         </div>
       </div>

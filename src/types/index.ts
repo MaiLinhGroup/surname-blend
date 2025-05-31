@@ -1,7 +1,7 @@
 export interface Person {
   firstName: string;
   middleName?: string;
-  lastName: string;
+  surname: string;
 }
 
 export interface Country {
