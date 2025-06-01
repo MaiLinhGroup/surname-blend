@@ -14,7 +14,7 @@ async function getCountry() {
   try {
     // Request structured data with automatic validation
     const country = await instructor.chat.completions.create({
-      model: "llama-3.1-8b-instant",
+      model: "llama-3.3-70b-versatile",
       response_model: {
         name: "Country",
         schema: CountrySchema,
@@ -23,7 +23,8 @@ async function getCountry() {
         {
           role: "user",
           content:
-            "Give me the legal framework and traditions around surnames for married couples in the Russian Federation",
+            "Give me the legal framework and traditions around \
+             surnames for married couples in Thailand",
         },
       ],
       max_retries: 2, // Instructor will retry if validation fails

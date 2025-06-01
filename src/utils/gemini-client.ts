@@ -11,10 +11,11 @@ async function getCountry() {
   const response = await ai.models.generateContent({
     model: "gemini-2.0-flash",
     contents:
-      "Give me the legal framework and traditions around surnames for married couples in the Spain",
+      "Give me the legal framework and traditions around surnames for married couples in Thailand",
     config: {
       systemInstruction:
-        "Imagine you are given a country and you need to give me the legal framework and traditions around surnames for married couples in the country. Adhere strictly to the requested output format.",
+        "Imagine you are given a country and you need to give me the legal framework and traditions\
+         around surnames for married couples in the country. Adhere strictly to the requested output format.",
       temperature: 0.3,
       responseMimeType: "application/json",
       responseSchema: toGeminiSchema(CountrySchema),

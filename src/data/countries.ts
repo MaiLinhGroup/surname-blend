@@ -354,6 +354,53 @@ const countries: Country[] = [
       },
     ],
   },
+  {
+    id: "th",
+    name: "Thailand",
+    description:
+      "In Thailand, a married couple can choose to take the same surname, but it is not mandatory. The couple can also choose to keep their individual surnames.",
+    options: [
+      {
+        id: "th-person1",
+        description: "Person 2 takes Person 1's surname",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person1.surname}`,
+          description: `Both partners take ${person1.firstName}'s surname (${person1.surname})`,
+        }),
+      },
+      {
+        id: "th-person2",
+        description: "Person 1 takes Person 2's surname",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners take ${person2.firstName}'s surname (${person2.surname})`,
+        }),
+      },
+      {
+        id: "th-unchanged",
+        description: "Both keep their original surnames",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `Both partners keep their original surnames`,
+        }),
+      },
+    ],
+  },
 ];
 
 export default countries;

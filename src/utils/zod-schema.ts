@@ -9,7 +9,7 @@ const CountryOptionSchema = z.object({
   description: z
     .string()
     .describe(
-      "The option's description, e.g. 'Person 1 takes Person 2's surname'"
+      "A short consise description of the option, e.g. 'Person 1 takes Person 2's surname'"
     ),
 });
 export const CountrySchema = z.object({
