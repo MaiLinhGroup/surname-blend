@@ -16,7 +16,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6 transition-all duration-300 hover:shadow-lg">
       <div className="flex items-center mb-4">
-        <Globe className="text-purple-500 mr-2\" size={24} />
+        <Globe className="text-purple-500 mr-2" size={24} />
         <h2 className="text-xl font-semibold text-gray-800">Select Country</h2>
       </div>
       
