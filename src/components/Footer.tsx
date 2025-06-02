@@ -9,12 +9,12 @@ const Footer: React.FC = () => {
           <div className="flex items-center mb-4 md:mb-0">
             <Heart className="mr-2 text-rose-500" size={18} />
             <p className="text-gray-600 text-sm">
-              SurnameBlend | Helping couples explore name possibilities
+              SurnameBlend | Helping married couples explore surname possibilities
             </p>
           </div>
           
           <p className="text-gray-500 text-sm text-center md:text-right">
-            Note: This app provides general information. Please consult local legal resources for official name change processes.
+            Note: This app provides general information. Please consult local legal resources for official surname change processes.
           </p>
         </div>
       </div>
