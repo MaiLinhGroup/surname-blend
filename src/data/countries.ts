@@ -401,6 +401,44 @@ const countries: Country[] = [
       },
     ],
   },
+  {
+    id: "fr",
+    name: "France",
+    description:
+      "In France, a marriage does not result in an automatic name change for either spouse. Each person retains their legal name (nom de naissance).\
+       Instead, they can acquire a 'name of use' (nom d'usage) which they can choose to use in daily life.",
+    options: [
+      {
+        id: "FR-retains",
+        description:
+          "Both spouses keep their original surnames as their official legal names.",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}`,
+          description: `By default, neither spouse is legally required to change their surname upon marriage.`,
+        }),
+      },
+      {
+        id: "FR-usage-add",
+        description:
+          "Either spouse can choose to add the other's surname to theirs, separated by a space or hyphen, as a usage name (nom d'usage).\
+           This is optional and does not replace the legal surname.",
+        nameFunction: (person1, person2) => ({
+          person1FullName: `${person1.firstName}${
+            person1.middleName ? ` ${person1.middleName} ` : " "
+          }${person1.surname}-${person2.surname}`,
+          person2FullName: `${person2.firstName}${
+            person2.middleName ? ` ${person2.middleName} ` : " "
+          }${person2.surname}-${person1.surname}`,
+          description: `Both partners add each other's surnames. This is optional and does not replace the legal surname.`,
+        }),
+      },
+    ],
+  },
 ];
 
 export default countries;
